@@ -1,4 +1,4 @@
-# 🏗 scaffold-eth - 🔏 sign in with web3 example
+# 🏗 scaffold-eth - 🔏 Web3-Sign-Message
 
 > Ask users to sign a message with their web3 wallet and recover it in a backend service
 
