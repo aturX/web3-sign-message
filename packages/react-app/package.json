@@ -15,6 +15,10 @@
     ]
   },
   "dependencies": {
+    "xml2json": "^0.12.0",
+    "react-xml-parser": "^1.1.8",
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@ant-design/icons": "^4.2.2",
     "@apollo/react-hooks": "^4.0.0",
     "@ethersproject/address": "^5.0.5",

@@ -21,6 +21,7 @@ import {
   useOnBlock,
 } from "./hooks";
 import { Header, Account, Faucet, Ramp, Contract, GasGauge, ThemeSwitch } from "./components";
+import SearchPage from "./components/Search/SearchPage"
 import { Transactor } from "./helpers";
 import { Hints, ExampleUI, Subgraph } from "./views";
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
@@ -31,13 +32,13 @@ const axios = require("axios");
 const serverUrl = "http://localhost:49832/";
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS.mainnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
 
 // 🛰 providers
-if (DEBUG) console.log("📡 Connecting to Rinkeby Ethereum");
+if (DEBUG) console.log("📡 Connecting to Mainnet Ethereum");
 
 const scaffoldEthProvider = new StaticJsonRpcProvider("https://rpc.scaffoldeth.io:48544");
 const mainnetInfura = new StaticJsonRpcProvider("https://mainnet.infura.io/v3/" + INFURA_ID);
@@ -202,11 +203,8 @@ function App(props) {
       possibleTxId = "";
     }
     // ADD NEWS  PAGE
-    display = (
-      <div style={{ marginTop: 32 }}>
-        {result}  
-      </div>
-      
+    display = ( 
+      <SearchPage />
     );
   } else if (isSigner) {
     display = (
@@ -217,7 +215,7 @@ function App(props) {
         onClick={async () => {
           setLoading(true);
           try {
-            const message = `Hi, ${address} Sign On This Dapp!`
+            const message = `Hi, ${address} Sign On This Dapp And  See The Crypto News!`
             if(message.length > 0) {
             const sig = await userProvider.send("personal_sign", [message, address]);
             console.log("sig", sig);
